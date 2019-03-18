@@ -1,0 +1,81 @@
+.NewsBlock {
+    position: relative;
+
+    padding: 10px;
+
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 4px;
+
+    &-Title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin: 0 0 10px 0;
+    }
+
+    &-Text {
+        $text-color: rgba(0, 0, 0, .6);
+        height: 200px;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        color: $text-color;
+
+        &_rich {
+            height: auto;
+        }
+    }
+
+    &-RichControl {
+        $color: rgba(0, 0, 0, .9);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin: 5px 0;
+
+        color: $color;
+
+        cursor: pointer;
+
+        &:before,
+        &:after {
+            display: block;
+
+            margin: 0 20px;
+            width: 60px;
+
+            content: "";
+
+            border: 1px solid $color;
+            border-width: 1px 0 0 0;
+        }
+    }
+
+    &-DeleteWarning {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        height: 100%;
+        width: 100%;
+
+        background-color: rgba(255, 255, 255, .8);
+    }
+
+    &-DeleteButtons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-top: 10px;
+    }
+}
