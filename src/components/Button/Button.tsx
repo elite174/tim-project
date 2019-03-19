@@ -17,7 +17,7 @@ export interface IButtonProps extends IClassNameProps {
 
 const cnButton = cn('Button');
 
-export const Button: React.FC<IButtonProps> = props => {
+export const Button: React.FC<IButtonProps> = React.memo(props => {
     const { className, onButtonClick, icon, text = '' } = props;
     return (
         <button className={cnButton(null, [className])} onClick={onButtonClick}>
@@ -25,4 +25,4 @@ export const Button: React.FC<IButtonProps> = props => {
             {icon ? <Icon {...icon} /> : null}
         </button>
     );
-};
+});

@@ -1,20 +1,22 @@
-import React, { useMemo } from 'react';
-import { checkPropTypes } from 'prop-types';
+import React from 'react';
 import { IClassNameProps } from '../../typings';
+import { cn } from 'recn';
 
 export interface IIconProps extends IClassNameProps {
     name: string;
     iconStyle?: 'ios' | 'md';
     onIconClick?: (e: React.MouseEvent) => void;
-    style?: React.StyleHTMLAttributes<HTMLDivElement>;
+    style?: React.CSSProperties;
 }
 
+const cnIcon = cn('Icon');
+
 export const Icon: React.FC<IIconProps> = React.memo(props => {
-    const { onIconClick, style, iconStyle = 'ios', name } = props;
+    const { onIconClick, style, iconStyle = 'ios', name, className } = props;
     return (
         <i
             onClick={onIconClick}
             style={style}
-            className={`ion-${iconStyle}-${name}`} />
+            className={cnIcon(null, [`ion-${iconStyle}-${name}`, className])} />
     );
 });

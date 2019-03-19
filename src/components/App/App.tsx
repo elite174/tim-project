@@ -1,6 +1,13 @@
 import React from 'react';
 import { News } from '../../typings';
 import { NewsList } from '../NewsList/NewsList';
+import { Sidebar } from '../Sidebar/Sidebar';
+
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+
+import './App.scss';
+import { NewsCreator } from '../NewsCreator/NewsCreator';
+import { cn } from 'recn';
 
 const sampleNews: News = {
     timestamp: 1,
@@ -19,9 +26,17 @@ const sampleNews: News = {
     title: 'SUPER Title'
 };
 
+const cnApp = cn('App')
+
 export const App = () => (
-    <div className='App'>
-        <NewsList newsList={[sampleNews]} />
-    </div>
+    <Router>
+        <div className={cnApp()}>
+            <Sidebar />
+            <div className={cnApp('Page')}>
+                <Route path='/new' exact component={NewsCreator} />
+                <Route path='/' exact render={() => <NewsList newsList={[sampleNews]} />} />
+            </div>
+        </div>
+    </Router>
 );
 
