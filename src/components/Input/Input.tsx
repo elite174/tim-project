@@ -1,8 +1,8 @@
 import React from 'react';
-import { cn } from 'recn';
+import { cn } from '@bem-react/classname';
 
 import './Input.scss';
-import { IClassNameProps } from '../../typings';
+import { IClassNameProps } from '@bem-react/core';
 
 export interface IInputProps extends IClassNameProps {
     label?: string;
@@ -18,7 +18,7 @@ export const Input: React.FC<IInputProps> = React.memo(props => {
     const { children, label = '' } = props;
 
     return (
-        <div className={props.className}>
+        <div className={cnInput(null, [props.className])}>
             <label className={cnInput('Label')}>{label}</label>
             {children}
         </div>

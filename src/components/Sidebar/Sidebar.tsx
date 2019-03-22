@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { cn } from 'recn';
+import { cn } from '@bem-react/classname';
 
 import './Sidebar.scss';
 import { Icon } from '../Icon/Icon';
@@ -7,7 +7,11 @@ import { Link } from 'react-router-dom';
 
 const cnSidebar = cn('Sidebar');
 
-export const Sidebar = () => {
+interface ISidebarProps {
+    newsCount: number;
+}
+
+export const Sidebar: React.FC<ISidebarProps> = React.memo(props => {
     return (
         <div className={cnSidebar()}>
             <Link to='/new' className={cnSidebar('Item')}>
@@ -16,8 +20,8 @@ export const Sidebar = () => {
             </Link>
             <Link to='/' className={cnSidebar('Item')}>
                 <Icon name='paper' className={cnSidebar('Icon')} />
-                Новости
+                {`Новости (${props.newsCount})`}
             </Link>
         </div>
     );
-}
+});

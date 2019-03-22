@@ -2,6 +2,8 @@
     display: flex;
     align-items: center;
 
+    padding: 2px 10px;
+
     border: 1px solid rgba(0, 0, 0, .3);
     border-radius: 4px;
 
@@ -10,4 +12,10 @@
     box-shadow: none;
 
     font-size: 14px;
+
+    transition: box-shadow .2s ease-out;
+
+    &:hover{
+        box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    }
 }

@@ -1,6 +1,8 @@
 import React from 'react';
-import { IClassNameProps } from '../../typings';
-import { cn } from 'recn';
+import { IClassNameProps } from '@bem-react/core';
+import { cn } from '@bem-react/classname';
+
+import './Icon.scss';
 
 export interface IIconProps extends IClassNameProps {
     name: string;
@@ -13,6 +15,7 @@ const cnIcon = cn('Icon');
 
 export const Icon: React.FC<IIconProps> = React.memo(props => {
     const { onIconClick, style, iconStyle = 'ios', name, className } = props;
+
     return (
         <i
             onClick={onIconClick}

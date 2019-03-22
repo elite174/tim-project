@@ -2,6 +2,7 @@
     position: relative;
 
     padding: 10px;
+    margin-bottom: 10px;
 
     border: 1px solid rgba(0, 0, 0, .3);
     border-radius: 4px;
@@ -14,6 +15,14 @@
         margin: 0 0 10px 0;
     }
 
+    &-TitleText {
+        margin-right: 10px;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
     &-Text {
         $text-color: rgba(0, 0, 0, .6);
         height: 200px;
@@ -22,6 +31,8 @@
         text-overflow: ellipsis;
 
         color: $text-color;
+
+        line-height: 22px;
 
         &_rich {
             height: auto;
@@ -68,6 +79,10 @@
         height: 100%;
         width: 100%;
 
+        animation: appear .2s ease-out;
+
+        filter: blur();
+
         background-color: rgba(255, 255, 255, .8);
     }
 
@@ -77,5 +92,15 @@
         justify-content: center;
 
         margin-top: 10px;
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }

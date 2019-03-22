@@ -1,6 +1,6 @@
 import React from 'react';
-import { cn } from 'recn';
-import { IClassNameProps } from '../../typings';
+import { cn } from '@bem-react/classname';
+import { IClassNameProps } from '@bem-react/core';
 
 import './ButtonControl.scss';
 
