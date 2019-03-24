@@ -1,5 +1,7 @@
 
 import { News } from '../typings';
+import produce from 'immer';
+import { Action, AddAction, ActionTypes, DeleteAction } from './store.typings';
 
 export const sampleNews: News = {
     timestamp: 1,
@@ -18,20 +20,24 @@ export const sampleNews: News = {
     title: 'SUPER Title'
 };
 
-export const state = {
+export interface IState {
+    newsList: News[];
+}
+
+export const initialState: IState = {
     newsList: [sampleNews]
 }
 
-export type Action = {
-    name: 'add' | 'delete';
 
-    payload?: any;
-}
-
-
-export const reducer = (action: Action) => {
+export const reducer = (state: IState, action: Action): IState => produce(state, draft => {
     switch (action.name) {
-        case 'add':
-            break;
+        case ActionTypes.add:
+            draft.newsList.push((action as AddAction).payload);
+            return;
+        case ActionTypes.delete:
+            draft.newsList = draft.newsList.filter(ni => ni.timestamp !== (action as DeleteAction).payload.timestamp);
+            return;
+        default:
+            return draft;
     }
-}
+});

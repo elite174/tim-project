@@ -7,8 +7,10 @@ import { Button } from '../Button/Button';
 import { noop } from '../../utils';
 import { ButtonControl } from '../ButtonControl/ButtonControl';
 import { withIcon } from '../Button/_icon/Button_icon';
+import { deleteAction } from '../../store/store.actionCreators';
+import { IDispatchComponentProps, DispatchComponent } from '../DispatchComponent/DispatchComponent';
 
-export interface INewsBlockProps {
+export interface INewsBlockProps extends IDispatchComponentProps {
     news: News;
 }
 
@@ -16,12 +18,13 @@ const IconButton = withIcon(Button);
 
 const cnNewsBlock = cn('NewsBlock');
 
-export const NewsBlock: React.FC<INewsBlockProps> = React.memo(props => {
-    const { news } = props;
+const NewsBlockPresenter: React.FC<INewsBlockProps> = props => {
+    const { news, dispatch } = props;
     const [richMode, setRichMode] = useState(false);
     const [deleteMode, setDeleteMode] = useState(false);
 
     const onDeleteCancelClick = () => setDeleteMode(!deleteMode);
+    const onDeleteClick = () => dispatch && dispatch(deleteAction(news));
 
     const renderRichControl = () => {
         return (
@@ -40,7 +43,7 @@ export const NewsBlock: React.FC<INewsBlockProps> = React.memo(props => {
             <div className={cnNewsBlock('DeleteWarning')}>
                 <div className={cnNewsBlock('DeleteText')}>Удалить новость?</div>
                 <ButtonControl className={cnNewsBlock('DeleteButtons')}>
-                    <Button text='Да' onButtonClick={noop} />
+                    <Button text='Да' onButtonClick={onDeleteClick} />
                     <Button text='Нет' onButtonClick={onDeleteCancelClick} />
                 </ButtonControl>
             </div>
@@ -61,4 +64,6 @@ export const NewsBlock: React.FC<INewsBlockProps> = React.memo(props => {
             {renderDeleteWarning()}
         </div>
     );
-});
+};
+
+export const NewsBlock = React.memo(DispatchComponent(NewsBlockPresenter));

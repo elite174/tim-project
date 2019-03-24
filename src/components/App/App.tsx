@@ -2,30 +2,31 @@ import React, { useState, createContext, useReducer } from 'react';
 import { News } from '../../typings';
 import { NewsList } from '../NewsList/NewsList';
 import { Sidebar } from '../Sidebar/Sidebar';
-
+import { AddAction, ActionTypes } from '../../store/store.typings'
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 import './App.scss';
 import { NewsCreator } from '../NewsCreator/NewsCreator';
 import { cn } from '@bem-react/classname';
-import { reducer, state, sampleNews } from '../../store';
+import { reducer, initialState } from '../../store';
+import { DispatchContext } from '.';
+
 
 const cnApp = cn('App')
 export const App = () => {
-    const [newsList, setNewsList] = useState([sampleNews]);
-    const addNewsItem = (newsItem: News) => setNewsList([...newsList, newsItem]);
-    const deleteNewsItem = (newsItem: News) => setNewsList(newsList.filter(ni => ni.timestamp !== newsItem.timestamp));
-    //const [s, dispatch] = useReducer(reducer, state, () => { })
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
         <Router>
-            <div className={cnApp()}>
-                <Sidebar newsCount={newsList.length} />
-                <div className={cnApp('Page')}>
-                    <Route path='/new' exact render={() => <NewsCreator addNewsItem={addNewsItem} />} />
-                    <Route path='/' exact render={() => <NewsList newsList={newsList} />} />
+            <DispatchContext.Provider value={dispatch}>
+                <div className={cnApp()}>
+                    <Sidebar newsCount={state.newsList.length} />
+                    <div className={cnApp('Page')}>
+                        <Route path='/new' exact render={() => <NewsCreator />} />
+                        <Route path='/' exact render={() => <NewsList newsList={state.newsList} />} />
+                    </div>
                 </div>
-            </div>
+            </DispatchContext.Provider>
         </Router>
     );
 };
