@@ -21,13 +21,14 @@ MongoClient.connect(url(
         useNewUrlParser: true
     }, (err, database) => {
         if (err) {
-            return console.error(err)
+            return;
         }
 
         /** Link routes to app */
         routes(app, database.db());
 
         app.listen(port, () => {
+            // eslint-disable-next-line no-console
             console.log('We are live on ' + port);
         });
     }
