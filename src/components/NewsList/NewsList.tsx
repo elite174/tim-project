@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { cn } from '@bem-react/classname';
 import { NewsBlock } from '../NewsBlock/NewsBlock';
 import { News } from '../../typings';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { cn } from '@bem-react/classname';
 
 import './Sidebar.scss';

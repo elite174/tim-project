@@ -26,7 +26,7 @@ export interface IState {
 
 export const initialState: IState = {
     newsList: [sampleNews]
-}
+};
 
 
 export const reducer = (state: IState, action: Action): IState => produce(state, draft => {

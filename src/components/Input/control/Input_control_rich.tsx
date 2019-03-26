@@ -17,6 +17,6 @@ export const withRichControl = withBemMod<IRichInputProps, IInputProps>(cnInput(
             <Input {...props}>
                 <textarea ref={ref as React.Ref<HTMLTextAreaElement>} rows={5} onChange={onChangeText} value={text} placeholder={placeholder} className={cnInput('Control')} />
             </Input>
-        )
+        );
     }
 );

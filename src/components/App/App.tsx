@@ -1,8 +1,6 @@
-import React, { useState, createContext, useReducer } from 'react';
-import { News } from '../../typings';
+import React, { useReducer } from 'react';
 import { NewsList } from '../NewsList/NewsList';
 import { Sidebar } from '../Sidebar/Sidebar';
-import { AddAction, ActionTypes } from '../../store/store.typings'
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 import './App.scss';
@@ -12,7 +10,7 @@ import { reducer, initialState } from '../../store';
 import { DispatchContext } from '.';
 
 
-const cnApp = cn('App')
+const cnApp = cn('App');
 export const App = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
 

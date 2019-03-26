@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import { News } from '../../typings';
 import { cn } from '@bem-react/classname';
 
@@ -31,8 +31,8 @@ const NewsBlockPresenter: React.FC<INewsBlockProps> = props => {
             <div className={cnNewsBlock('RichControl')} onClick={() => setRichMode(!richMode)}>
                 {richMode ? 'Свернуть' : 'Развернуть'}
             </div>
-        )
-    }
+        );
+    };
 
     const renderDeleteWarning = () => {
         if (!deleteMode) {
@@ -48,7 +48,7 @@ const NewsBlockPresenter: React.FC<INewsBlockProps> = props => {
                 </ButtonControl>
             </div>
         );
-    }
+    };
 
     return (
         <div className={cnNewsBlock()}>

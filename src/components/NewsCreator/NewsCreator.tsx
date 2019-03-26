@@ -17,15 +17,15 @@ export interface INewsCreatorProps {
     //addNewsItem: (newsItem: News) => void;
 }
 
-export const NewsCreator: React.FC<INewsCreatorProps> = React.memo(props => {
+export const NewsCreator: React.FC<INewsCreatorProps> = React.memo(() => {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const dispatch = useContext(DispatchContext);
 
-    const MDefaultInput = useMemo(() => <DefaultInput ref={inputRef} text={title} label='Заголовок' control='default' onChangeText={e => setTitle(e.target.value)} />, [title])
-    const MTextareaInput = useMemo(() => <TextAreaInput ref={textAreaRef} text={text} label='Текст новости' control='rich' onChangeText={e => setText(e.target.value)} />, [text])
+    const MDefaultInput = useMemo(() => <DefaultInput ref={inputRef} text={title} label='Заголовок' control='default' onChangeText={e => setTitle(e.target.value)} />, [title]);
+    const MTextareaInput = useMemo(() => <TextAreaInput ref={textAreaRef} text={text} label='Текст новости' control='rich' onChangeText={e => setText(e.target.value)} />, [text]);
 
     const onAddButtonClick = () => {
         setTitle('');
@@ -35,7 +35,7 @@ export const NewsCreator: React.FC<INewsCreatorProps> = React.memo(props => {
             title,
             timestamp: new Date().getUTCMilliseconds()
         }));
-    }
+    };
 
     return (
         <div className={cnNewsCreator()}>

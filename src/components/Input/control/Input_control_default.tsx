@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { IInputProps, cnInput } from '../Input';
 
 import './Input_control_default.scss';
@@ -18,6 +18,6 @@ export const withDefaultControl = withBemMod<IDefaultInputProps, IInputProps>(
             <Input {...props}>
                 <input onChange={onChangeText} value={text} placeholder={placeholder} className={cnInput('Control')} />
             </Input>
-        )
+        );
     }
 );

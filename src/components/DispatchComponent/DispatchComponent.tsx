@@ -8,5 +8,5 @@ export interface IDispatchComponentProps {
 export const DispatchComponent = <P extends IDispatchComponentProps>(Component: React.FC<P>) => (props: P) => {
     const dispatch = useContext(DispatchContext);
 
-    return <Component {...props} dispatch={dispatch} />
-}
+    return <Component {...props} dispatch={dispatch} />;
+};

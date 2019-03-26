@@ -24,5 +24,5 @@ export const Input: React.FC<IInputProps> = React.memo(props => {
         </div>
     );
 }, (prevProps, nextProps) => {
-    return prevProps.text === nextProps.text
+    return prevProps.text === nextProps.text;
 });
