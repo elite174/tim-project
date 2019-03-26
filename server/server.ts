@@ -1,6 +1,6 @@
-import express from 'express';
+import * as express from 'express';
 import { MongoClient } from 'mongodb';
-import bodyParser from 'body-parser';
+import * as bodyParser from 'body-parser';
 
 import { Credentials } from './credentials';
 import { url } from './config/db.config';
